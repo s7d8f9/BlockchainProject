@@ -1,6 +1,5 @@
-var PPosong = artifacts.require("./PPosong.sol");
+const EcommerceStore = artifacts.require("EcommerceStore");
 
-module.exports = function (deployer) {
-    deployer.deploy(PPosong);
-
+module.exports = function(deployer) {
+  deployer.deploy(EcommerceStore);
 };
