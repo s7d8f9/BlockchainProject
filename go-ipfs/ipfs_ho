@@ -1,0 +1,56 @@
+1. ipfs 설치  https://ipfs.io/  # 이미 완료된 상태
+
+2. ipfs 초기화
+$ ./ipfs init
+
+3. 설치 완료 화면에 예제 실행해보기
+$ ./ipfs cat /ipfs/QmS4ustL54uo8FzR9455qaxZwuMiUhyvMcX9Ba8nUH4uVv/readme
+$ ./ipfs ls /ipfs/QmS4ustL54uo8FzR9455qaxZwuMiUhyvMcX9Ba8nUH4uVv/readme
+
+4. ipfs에 올리기 원하는파일 만들기
+ipfs_test.txt
+
+5. ipfs 올리기 -> 해시 발생 ex) QmYg7438VM5xZcGCo9Y74QZgnwPdGiz5e9wrDvkTWSX9NN
+$ ./ipfs add ipfs_test.txt
+
+6. 올린파일 확인하기₩1
+$ ./ipfs cat QmYg7438VM5xZcGCo9Y74QZgnwPdGiz5e9wrDvkTWSX9NN
+
+7. ipfs 서버 개시
+$ ./ipfs daemon
+
+7-1. 만약 8080포트 사용하고있으면
+$ sudo lsof -i:8080				// 사용중인 포트 확인
+$ lsof -i -P 					// 열린포트 모두 확인
+$ netstat -a | grep -i "listen"	// 열린포트 모두 확인
+$ kill -9 "pid"					// pid로 죽이기
+$ kill $(lsof -t -i:8080)		// 포트 죽이기
+
+8. 웹 페이지 접근 방식
+http://localhost:8080/ipfs/QmYg7438VM5xZcGCo9Y74QZgnwPdGiz5e9wrDvkTWSX9NN
+http://ipfs.io/ipfs/QmYg7438VM5xZcGCo9Y74QZgnwPdGiz5e9wrDvkTWSX9NN
+
+9. ipfs 권한 변경
+$ ./ipfs config --json API.HTTPHeaders.Access-Control-Allow-Origin '["*"]'
+$ ./ipfs config --json API.HTTPHeaders.Access-Control-Allow-Methods "[\"PUT\", \"POST\", \"GET\"]"
+$ ./ipfs config --json API.HTTPHeaders.Access-Control-Allow-Credentials '["true"]'
+
+*************************** 주의사항 ***************************
+1. npm install error -> sudo npm install error -g
+
+npm ERR! path /Users/hoyeullee/BlockchainProject/app/node_modules/websocket
+npm ERR! code EISGIT
+npm ERR! git /Users/hoyeullee/BlockchainProject/app/node_modules/websocket: Appears to be a git repo or submodule.
+npm ERR! git     /Users/hoyeullee/BlockchainProject/app/node_modules/websocket
+npm ERR! git Refusing to remove it. Update manually,
+npm ERR! git or move it out of the way first.
+
+npm ERR! A complete log of this run can be found in:
+npm ERR!     /Users/hoyeullee/.npm/_logs/2019-08-21T10_39_44_328Z-debug.log
+
+2. 개빡친다 삽질 조온나함..
+파일 생성해서 ipfs에 올릴때 파일이름이 ipfs*.*이러면 안됨...
+
+
+
+
